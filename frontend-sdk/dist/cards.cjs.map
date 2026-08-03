@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/cards/index.ts"],"sourcesContent":["export type {\n  AppViewData,\n  CardAction,\n  CardFact,\n  CardSchema,\n  CardViewData,\n  FieldFormat,\n  ListItem,\n  ListViewData,\n  TableColumn,\n  TableViewData,\n} from \"./schema\"\n"],"mappings":";;;;;;;;;;;;;;;;AAAA;AAAA;","names":[]}

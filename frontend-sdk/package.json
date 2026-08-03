@@ -1,0 +1,45 @@
+{
+  "name": "@mocloud/frontend-sdk",
+  "version": "0.2.0",
+  "description": "Frontend Bridge helper for mo-cloud app views, host bridge calls, and render schema types",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./cards": {
+      "types": "./dist/cards.d.ts",
+      "import": "./dist/cards.js",
+      "require": "./dist/cards.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "preview": "vite --config preview/vite.config.ts"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "~5.7.0",
+    "vite": "^6.0.0"
+  }
+}

@@ -16,6 +16,7 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsup",
+    "build:all": "pnpm build && pnpm --dir frontend-sdk build",
     "dev": "tsup --watch"
   },
   "peerDependencies": {

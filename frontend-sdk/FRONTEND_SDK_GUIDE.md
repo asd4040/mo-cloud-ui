@@ -2,6 +2,8 @@
 
 This package is the lightweight JavaScript Bridge helper for MoCloud apps that run inside host-controlled surfaces.
 
+> Official integration examples and compatibility testing currently target React 18/19, TypeScript 5.7+, Vite 6/7, Node.js 20/22, and pnpm 10/11. Other frameworks and package managers are not officially supported.
+
 It is **not** the third-party App development framework. The App framework is defined by the App manifest, capability contracts, surface contracts, optional embedded UI bundle, provider endpoint contract, sandbox fixtures, and review package.
 
 It contains only the interaction runtime:

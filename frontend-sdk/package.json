@@ -1,6 +1,7 @@
 {
   "name": "@mocloud/frontend-sdk",
   "version": "0.2.0",
+  "packageManager": "pnpm@11.3.0",
   "description": "Lightweight JavaScript Bridge client for MoCloud embedded apps",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -17,6 +18,10 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
+  },
+  "engines": {
+    "node": ">=20 <23",
+    "pnpm": ">=10 <12"
   },
   "devDependencies": {
     "tsup": "^8.0.0",

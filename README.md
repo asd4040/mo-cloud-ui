@@ -7,6 +7,25 @@
 | 仓库根目录 | `@mo-cloud/ui` | React UI 组件和主题 |
 | `frontend-sdk/` | `@mocloud/frontend-sdk` | iframe Bridge、能力调用和本地 Mock |
 
+> [!IMPORTANT]
+> 本仓库当前只对 **React + TypeScript + Vite + pnpm** 项目提供官方支持。请不要把 `@mo-cloud/ui` 用在 Vue、Angular、Svelte、Next.js 服务端组件或其他未经验证的框架中。
+
+## 官方支持范围
+
+| 项目 | 支持版本 |
+|---|---|
+| Node.js | 20、22 |
+| pnpm | 10、11 |
+| React | 18、19 |
+| React DOM | 与 React 相同主版本 |
+| TypeScript | 5.7 及以上 |
+| Vite | 6、7 |
+
+- `@mo-cloud/ui` 是 React UI 组件库，必须在 React 项目中使用。
+- `@mocloud/frontend-sdk` 是浏览器端 JavaScript Bridge，但官方示例和测试当前只覆盖 React + Vite。
+- 不支持在 Node.js 服务端执行依赖 `window` 的 Bridge API。
+- 不建议使用 npm、yarn 或 bun 安装本仓库的本地源码包；文档和锁文件统一以 pnpm 为准。
+
 ## 1. 下载
 
 从 GitHub 下载：https://github.com/asd4040/mo-cloud-ui
@@ -33,11 +52,6 @@
 ## 3. 安装 UI 和 Frontend SDK
 
 ```bash
-# npm
-npm install ./libs/mo-cloud-ui
-npm install ./libs/mo-cloud-ui/frontend-sdk
-
-# pnpm
 pnpm add ./libs/mo-cloud-ui
 pnpm add ./libs/mo-cloud-ui/frontend-sdk
 ```

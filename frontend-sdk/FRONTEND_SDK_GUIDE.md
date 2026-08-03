@@ -1,18 +1,17 @@
-# Frontend Bridge Helper Guide
+# Frontend JavaScript Bridge Guide
 
-`sdk/frontend` is the frontend Bridge/render-schema helper for mo-cloud apps that run inside host-controlled surfaces.
+This package is the lightweight JavaScript Bridge helper for MoCloud apps that run inside host-controlled surfaces.
 
 It is **not** the third-party App development framework. The App framework is defined by the App manifest, capability contracts, surface contracts, optional embedded UI bundle, provider endpoint contract, sandbox fixtures, and review package.
 
-It contains:
+It contains only the interaction runtime:
 
 - Bridge client for frontend app views
 - Host message protocol helpers
 - Capability invocation helpers
 - Mock context/result helpers for local preview
-- Render schema TypeScript types
 
-It does not own manifest validation, backend transports, provider signing, connector runtimes, bundle upload, sandbox preview, or app publishing APIs.
+It does not contain UI components, cards, manifest validation, backend transports, bundle upload, or publishing APIs.
 
 ## Package Name
 
@@ -50,7 +49,7 @@ const res = await bridge.invokeCapability("get_weather", {
 ## Directory
 
 ```text
-sdk/frontend/
+frontend-sdk/
   src/
     bridge.ts
     constants.ts
@@ -58,12 +57,10 @@ sdk/frontend/
     mock.ts
     rpc.ts
     types.ts
-  preview/
-    App.tsx
 ```
 
 ## Boundaries
 
-- `sdk/frontend` is for embedded-view frontend developers only.
-- Render schema types are exported for compile-time use, but production card rendering belongs to each consuming frontend surface.
+- `frontend-sdk` is framework-independent JavaScript and can be used from React, Vue, or plain HTML.
+- UI components remain in the separate `@mo-cloud/ui` package.
 - Do not add platform governance, publishing, or connector runtime logic here.

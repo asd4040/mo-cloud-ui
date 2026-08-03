@@ -67,6 +67,15 @@
         "name": { "type": "string", "description": "能力显示名称。" },
         "type": { "type": "string", "description": "能力类型，例如 tool。" },
         "description": { "type": "string", "description": "能力用途说明。" },
+        "allowed_for_agent": {
+          "type": "boolean",
+          "description": "是否允许 Agent / 嵌入式 Surface 调用；未声明时平台默认 false。"
+        },
+        "risk_level": {
+          "type": "string",
+          "enum": ["low", "write", "high"],
+          "description": "能力风险等级；只读查询通常使用 low。"
+        },
         "transport": {
           "type": "object",
           "required": ["type", "topology", "endpoint", "method"],

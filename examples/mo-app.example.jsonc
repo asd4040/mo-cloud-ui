@@ -23,6 +23,11 @@
       "type": "tool",
       "description": "获取商城商品列表",
 
+      // 允许 Agent / 嵌入式 Surface 调用；不填写时平台默认 false，调用会返回 CapabilityUnavailable。
+      "allowed_for_agent": true,
+      // 只读查询使用 low；创建、修改、删除能力应按实际风险选择 write 或 high。
+      "risk_level": "low",
+
       // 能力的实际调用方式。
       "transport": {
         "type": "http",

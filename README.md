@@ -14,6 +14,8 @@
 
 正式上传的文件必须是无注释的 `mo-app.json`；`.jsonc` 仅作为开发参考模板。
 
+需要让 Agent 或嵌入式 Surface 调用的能力，必须显式设置 `"allowed_for_agent": true`；平台对未声明该字段的能力默认禁用。只读查询还应设置 `"risk_level": "low"`，否则调用可能返回 `CapabilityUnavailable`。
+
 > [!IMPORTANT]
 > 本仓库当前只对 **React + TypeScript + Vite + pnpm** 项目提供官方支持。请不要把 `@mo-cloud/ui` 用在 Vue、Angular、Svelte、Next.js 服务端组件或其他未经验证的框架中。
 

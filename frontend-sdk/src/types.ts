@@ -11,29 +11,11 @@ export interface BridgeContext {
   launchData?: unknown
 }
 
-/** 渲染提示 */
-export interface RenderHint {
-  type: string
-  surface_id: string
-  schema: string
-  data: Record<string, unknown>
-}
-
-/** 后续动作 */
-export interface NextAction {
-  label: string
-  capability_id: string
-  requires_confirm: boolean
-  args?: Record<string, unknown>
-}
-
 /** 能力调用统一返回信封 */
 export interface ResultEnvelope {
   request_id: string
   status: "ok" | "error" | "need_consent" | "need_confirm"
   output: Record<string, unknown>
-  render?: RenderHint
-  next_actions?: NextAction[]
   error?: { code: string; message: string }
 }
 

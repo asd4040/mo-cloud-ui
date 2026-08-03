@@ -10,27 +10,11 @@ interface BridgeContext {
     query?: string;
     launchData?: unknown;
 }
-/** 渲染提示 */
-interface RenderHint {
-    type: string;
-    surface_id: string;
-    schema: string;
-    data: Record<string, unknown>;
-}
-/** 后续动作 */
-interface NextAction {
-    label: string;
-    capability_id: string;
-    requires_confirm: boolean;
-    args?: Record<string, unknown>;
-}
 /** 能力调用统一返回信封 */
 interface ResultEnvelope {
     request_id: string;
     status: "ok" | "error" | "need_consent" | "need_confirm";
     output: Record<string, unknown>;
-    render?: RenderHint;
-    next_actions?: NextAction[];
     error?: {
         code: string;
         message: string;
@@ -104,4 +88,4 @@ declare const BRIDGE_PROTO = "bridge/v1";
  */
 declare function onHostMessage(kind: string, handler: (msg: BridgeMessage) => void): () => void;
 
-export { BRIDGE_PROTO, type BridgeContext, type BridgeMessage, type InvokeOptions, type NextAction, type RenderHint, type ResultEnvelope, bridge, onHostMessage };
+export { BRIDGE_PROTO, type BridgeContext, type BridgeMessage, type InvokeOptions, type ResultEnvelope, bridge, onHostMessage };

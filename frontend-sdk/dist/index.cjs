@@ -191,8 +191,6 @@ var MoBridge = class {
       request_id: msg.request_id ?? "",
       status: msg.status ?? "error",
       output: msg.output ?? {},
-      render: msg.render,
-      next_actions: msg.next_actions,
       error: msg.error
     };
   }

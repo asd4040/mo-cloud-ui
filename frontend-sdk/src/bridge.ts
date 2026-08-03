@@ -113,8 +113,6 @@ class MoBridge {
       request_id: (msg.request_id as string) ?? "",
       status: (msg.status as ResultEnvelope["status"]) ?? "error",
       output: (msg.output as Record<string, unknown>) ?? {},
-      render: msg.render as ResultEnvelope["render"],
-      next_actions: msg.next_actions as ResultEnvelope["next_actions"],
       error: msg.error as ResultEnvelope["error"],
     }
   }

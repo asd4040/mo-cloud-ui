@@ -11,7 +11,7 @@ It contains only the interaction runtime:
 - Capability invocation helpers
 - Mock context/result helpers for local preview
 
-It does not contain UI components, cards, manifest validation, backend transports, bundle upload, or publishing APIs.
+It does not contain UI components, manifest validation, backend transports, bundle upload, or publishing APIs.
 
 ## Package Name
 

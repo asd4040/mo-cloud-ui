@@ -4,8 +4,6 @@ export { onHostMessage } from "./rpc"
 export type {
   BridgeContext,
   ResultEnvelope,
-  RenderHint,
-  NextAction,
   InvokeOptions,
   BridgeMessage,
 } from "./types"

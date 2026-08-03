@@ -7,6 +7,13 @@
 | 仓库根目录 | `@mo-cloud/ui` | React UI 组件和主题 |
 | `frontend-sdk/` | `@mocloud/frontend-sdk` | iframe Bridge、能力调用和本地 Mock |
 
+`mo-app.json` 配置参考：
+
+- [`examples/mo-app.example.jsonc`](examples/mo-app.example.jsonc)：每个常用字段都有中文注释。
+- [`schema/mo-app.schema.json`](schema/mo-app.schema.json)：为 IDEA / VS Code 提供字段补全、解释和基础校验。
+
+正式上传的文件必须是无注释的 `mo-app.json`；`.jsonc` 仅作为开发参考模板。
+
 > [!IMPORTANT]
 > 本仓库当前只对 **React + TypeScript + Vite + pnpm** 项目提供官方支持。请不要把 `@mo-cloud/ui` 用在 Vue、Angular、Svelte、Next.js 服务端组件或其他未经验证的框架中。
 

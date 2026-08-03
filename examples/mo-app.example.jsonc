@@ -1,0 +1,80 @@
+{
+  // 可选：让 IDEA / VS Code 提供字段提示和格式校验。
+  "$schema": "../schema/mo-app.schema.json",
+
+  // 应用名称，将展示在应用列表和详情页。
+  "name": "Mo Shop Demo",
+
+  // 目标用户：c 表示消费者端。
+  "audience": "c",
+
+  // 应用分类，用于应用市场归类。
+  "category": "shopping",
+
+  // 简要说明应用提供的功能。
+  "description": "商品浏览、搜索和详情查看",
+
+  // 应用声明的宿主能力，页面通过相同 id 调用。
+  "capabilities": [
+    {
+      // 唯一能力 ID，必须与 bridge.invokeCapability() 的第一个参数一致。
+      "id": "get_products",
+      "name": "获取商品列表",
+      "type": "tool",
+      "description": "获取商城商品列表",
+
+      // 能力的实际调用方式。
+      "transport": {
+        "type": "http",
+        "topology": "public",
+        "endpoint": "https://example.com/products",
+        "method": "GET"
+      },
+
+      // 调用参数和返回值均使用 JSON Schema 描述。
+      "input_schema": {
+        "type": "object",
+        "properties": {}
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "products": { "type": "array" }
+        }
+      },
+
+      "runtime": {
+        // 调用超时时间，单位为毫秒。
+        "timeout_ms": 10000,
+        // 查询为 false；创建、修改、删除等操作通常为 true。
+        "side_effect": false
+      }
+    }
+  ],
+
+  // 应用可渲染的宿主界面。
+  "surfaces": [
+    {
+      "id": "main_view",
+      "type": "embedded_view",
+      "schema": "app_view.v1"
+    }
+  ],
+
+  "embed": {
+    // fullscreen 表示以全屏嵌入视图打开。
+    "entry_type": "fullscreen",
+    // 上传时由平台处理，模板中保留占位值。
+    "bundle": "resource://placeholder",
+    // 必须显式声明页面需要使用的能力和 UI 权限。
+    "permissions": [
+      "capability:invoke:get_products",
+      "ui:render"
+    ]
+  },
+
+  "network": {
+    // 页面允许连接的外部域名，不要填写协议或路径。
+    "connect_src": ["example.com"]
+  }
+}

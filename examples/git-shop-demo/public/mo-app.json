@@ -1,0 +1,170 @@
+{
+  "name": "Mo Shop Demo",
+  "audience": "c",
+  "category": "shopping",
+  "description": "Apple 精选好物商城，支持商品浏览、搜索和详情查看",
+
+  "capabilities": [
+    {
+      "id": "get_products",
+      "name": "获取商品列表",
+      "type": "tool",
+      "description": "返回商城全部商品列表，包含标题、币种和商品数组",
+      "allowed_for_agent": true,
+      "risk_level": "low",
+      "transport": {
+        "type": "http",
+        "topology": "public",
+        "endpoint": "https://m1.apifoxmock.com/m1/8557587-8333464-default/products",
+        "method": "GET"
+      },
+      "input_schema": {
+        "type": "object",
+        "properties": {}
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "商城标题" },
+          "currency": { "type": "string", "description": "币种" },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "price": { "type": "number" },
+                "desc": { "type": "string" },
+                "tag": { "type": "string" },
+                "sales": { "type": "number" }
+              }
+            }
+          }
+        }
+      },
+      "runtime": {
+        "timeout_ms": 10000,
+        "side_effect": false
+      }
+    },
+    {
+      "id": "search_products",
+      "name": "搜索商品",
+      "type": "tool",
+      "description": "按关键词搜索商品，返回匹配的商品列表",
+      "allowed_for_agent": true,
+      "risk_level": "low",
+      "transport": {
+        "type": "http",
+        "topology": "public",
+        "endpoint": "https://m1.apifoxmock.com/m1/8557587-8333464-default/search_products",
+        "method": "GET"
+      },
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "keyword": { "type": "string", "description": "搜索关键词" }
+        },
+        "required": ["keyword"]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "currency": { "type": "string" },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "price": { "type": "number" },
+                "desc": { "type": "string" },
+                "tag": { "type": "string" },
+                "sales": { "type": "number" }
+              }
+            }
+          }
+        }
+      },
+      "runtime": {
+        "timeout_ms": 10000,
+        "side_effect": false
+      }
+    },
+    {
+      "id": "get_product_detail",
+      "name": "商品详情",
+      "type": "tool",
+      "description": "根据商品ID获取单个商品的详细信息，包含规格、库存和评分",
+      "allowed_for_agent": true,
+      "risk_level": "low",
+      "transport": {
+        "type": "http",
+        "topology": "public",
+        "endpoint": "https://m1.apifoxmock.com/m1/8557587-8333464-default/product_detail",
+        "method": "GET"
+      },
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "product_id": { "type": "string", "description": "商品ID" }
+        },
+        "required": ["product_id"]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "price": { "type": "number" },
+          "desc": { "type": "string" },
+          "tag": { "type": "string" },
+          "sales": { "type": "number" },
+          "stock": { "type": "number" },
+          "rating": { "type": "number" },
+          "specs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "value": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "runtime": {
+        "timeout_ms": 10000,
+        "side_effect": false
+      }
+    }
+  ],
+
+  "surfaces": [
+    {
+      "id": "shop_view",
+      "type": "embedded_view",
+      "schema": "app_view.v1"
+    }
+  ],
+
+  "embed": {
+    "entry_type": "fullscreen",
+    "bundle": "resource://placeholder",
+    "permissions": [
+      "capability:invoke:get_products",
+      "capability:invoke:search_products",
+      "capability:invoke:get_product_detail",
+      "ui:close",
+      "ui:render"
+    ]
+  },
+
+  "network": {
+    "connect_src": ["m1.apifoxmock.com"]
+  }
+}
